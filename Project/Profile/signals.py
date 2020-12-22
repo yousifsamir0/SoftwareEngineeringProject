@@ -9,6 +9,9 @@ from .models import Profile, Relationship
 def auto_create_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+        Profile.objects.get(user=instance).fName=instance.first_name
+        Profile.objects.get(user=instance).lName=instance.last_name
+        
 
 
 @receiver(post_save, sender=Relationship)
@@ -20,3 +23,4 @@ def addfriend_relationship(sender, instance, created, **kwargs):
         thereciever.friends.add(thesender.user)
         thesender.save()
         thereciever.save()
+        

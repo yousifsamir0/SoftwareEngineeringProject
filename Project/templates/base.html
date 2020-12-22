@@ -1,0 +1,58 @@
+{%load static%}
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="{% static 'profile/css/style.css' %}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}{%endblock%}</title>
+
+</head>
+<body>
+
+    <!--nav Bar-->
+ <div>
+    <div class="header">
+        <br />
+        &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+        EMA
+    </div>
+    <div id="searcharea" class="header1">
+        <input placeholder="search here" type="search" id="searchbox">
+    </div>
+    <div id="profilearea" class="header1">
+        <a href="#"><img class="im" src="{%static 'profile/prof.jpeg'%}" /></a>
+        <div id="notifications" class="header1"><img class="im" src="{%static 'profile/noti.jpeg'%}" />  </div>
+        <div id="groups" class="header1"><img class="im" src="{% static 'profile/home.jpeg' %}" /> </div>
+        <div id="home" class="header1"><a href="#"><img class="im" src="{%static 'profile/home.jpeg'%}" /> </a></div>
+        <div id="message" class="header1"><img class="im" src="{%static 'profile/chat.jpeg'%}" /> </div>
+        <div id="setting" class="header1"><img class="im" src="{%static 'profile/set.jpeg'%}" /> </div>
+    </div>
+</div>
+{%block body%}
+{%endblock%}
+    <!--chatbox rightside-->
+    <div class="chat-sidebarx">
+    </div>
+    <div class="chat-sidebar">
+        <div id="chatnamebox" class="chat-sidebar">jb</div>
+        <div id="chatnamebox1" class="chat-sidebar">jb</div>
+        <div id="chatnamebox2" class="chat-sidebar">jb</div>
+        <div id="chatnamebox3" class="chat-sidebar">jb</div>
+        <div id="chatnamebox4" class="chat-sidebar">jb</div>
+        <div id="chatnamebox5" class="chat-sidebar">jb</div>
+        <div id="chatnamebox6" class="chat-sidebar">jb</div>
+        <div id="chatnameboxp1" class="chat-sidebar"><img src="{%static 'profile/prof.jpeg'%}" height="30" /></div>
+        <div id="chatnameboxp2" class="chat-sidebar"><img src="{%static 'profile/prof.jpeg'%}" height="30" /></div>
+        <div id="chatnameboxp3" class="chat-sidebar"><img src="{%static 'profile/prof.jpeg'%}" height="30" /></div>
+        <div id="chatnameboxp4" class="chat-sidebar"><img src="{%static 'profile/prof.jpeg'%}" height="30" /></div>
+        <div id="chatnameboxp5" class="chat-sidebar"><img src="{%static 'profile/prof.jpeg'%}" height="30" /></div>
+        <div id="chatnameboxp6" class="chat-sidebar"><img src="{%static 'profile/prof.jpeg'%}" height="30" /></div>
+        <div id="chatnameboxp7" class="chat-sidebar"><img src="{%static 'profile/prof.jpeg'%}" height="30" /></div>
+    </div>
+   
+    
+    {%block script%}
+    {%endblock%}
+</body>
+</html>

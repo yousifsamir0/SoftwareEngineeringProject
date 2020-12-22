@@ -1,0 +1,13 @@
+body {
+  background-image: url(pexels-matheus-bertelli-1144687.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.signup-form {
+  font-family: "Permanent Marker", cursive;
+  color: green;
+  font-size: 40px;
+  letter-spacing: 5px;
+  font-size: 50px;
+}

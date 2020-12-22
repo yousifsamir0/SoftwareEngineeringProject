@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Timeline.urls')),
     path('', include('Profile.urls')),
+    path('', include('Accounts.urls')),
 
 ]
 

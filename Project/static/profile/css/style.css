@@ -1,0 +1,835 @@
+body {
+    background: linear-gradient(to bottom right, white, #bcbdc4);
+    height: 4000px;
+}
+
+/*header bar*/
+
+.header1, .header {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background-color: #09755D;
+    top: 0;
+    left: 0;
+    font-family: fantasy;
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: white;
+    z-index: 7;
+}
+
+.header {
+    border-width: 0px 0px 3px 0px;
+    border-color: black;
+    border-style: solid;
+}
+
+#searcharea {
+    top: 17px;
+    left: 20%;
+    height: 35px;
+}
+
+#searchbox {
+    width: 300px;
+    height: 26px;
+    background: white;
+    padding: 5px;
+    border-radius: 10px/10px;
+}
+
+#profilearea {
+    top: 20px;
+    left: 930px;
+    height: 40px;
+    width: 20px;
+}
+
+#notifications {
+    top: 20px;
+    left: 650px;
+    height: 30px;
+    width: 20px;
+}
+
+.im {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+#groups {
+    top: 20px;
+    left: 750px;
+    height: 30px;
+    width: 20px;
+}
+
+#message {
+    top: 20px;
+    left: 700px;
+    height: 30px;
+    width: 20px;
+}
+
+#setting {
+    top: 20px;
+    left: 800px;
+    height: 30px;
+    width: 20px;
+}
+
+#home {
+    top: 19px;
+    left: 145px;
+    height: 30px;
+    width: 20px;
+}
+
+/*.header1 {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background: #142170;
+    top: 0;
+    left: 0;
+    color: white;
+    z-index: 7;
+}
+#img3 {
+    left: 100px;
+    height: 50px;
+    top: 5px;
+}   
+#searcharea {
+    top: 17px;
+    left: 240px;
+    height: 40px;
+}
+
+#profilearea {
+    top: 15px;
+    left: 780px;
+    height: 40px;
+}
+
+#profilearea1 {
+    top: 20px;
+    left: 830px;
+    height: 20px;
+    font-size: 20px;
+    font-family: verdana;
+}
+#profilearea3 {
+    top: 10px;
+    left: 900px;
+    height: 30px;
+    font-size: 30px;
+    font-family: verdana;
+}
+#findf {
+    top: 15px;
+    left: 1015px;
+    height: 30px;
+}
+
+#message {
+    top: 15px;
+    left: 1060px;
+    height: 30px;
+}
+
+#notification {
+    top: 15px;
+    left: 1105px;
+    height: 30px;
+}
+#profilearea2 {
+    top: 10px;
+    left: 1150px;
+    height: 30px;
+    font-size: 30px;
+    font-family: verdana;
+}
+#setting {
+    top: 15px;
+    height: 30px;
+    left: 1170px;
+}
+#logout {
+    top: 15px;
+    height: 30px;
+    left: 1215px;
+}*/
+
+/*cover picture*/
+
+.header0001 {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background: #142170;
+    top: 0;
+    left: 0;
+    color: white;
+    z-index: 6;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+}
+
+.coverpad {
+    left: 100px;
+    top: 60px;
+    background: white;
+    height: 360px;
+    width: 850px;
+    position: absolute;
+    display: none;
+}
+
+.coverpadx {
+    left: 100px;
+    top: 60px;
+    height: 360px;
+    width: 850px;
+    position: absolute;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+}
+
+/*profile picture*/
+
+.profilepic {
+    width: 140px;
+    height: 140px;
+    padding: 5px;
+    top: 255px;
+    left: 110px;
+    background: white;
+    position: absolute;
+    border-radius: 2px/2px;
+}
+
+.profilepicx {
+    width: 140px;
+    height: 140px;
+    padding: 5px;
+    top: 255px;
+    left: 110px;
+    position: absolute;
+    border-radius: 2px/2px;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+}
+
+/*username*/
+
+.username {
+    left: 275px;
+    font-size: 20px;
+    font-weight: 500 ;
+    font-family: verdana;
+    color: black ;
+    top: 325px;
+    height: 50px;
+    width: 200px;
+    position: absolute;
+    background-color:rgba(188, 189, 196, 0.5) ;
+}
+
+/*timeline box*/
+.box11 {
+    top: 375px;
+    left: 280px;
+    padding: 12px;
+    background: white;
+    position: absolute;
+    width: 70px;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    height: 16px;
+    font-size: 16px;
+    font-family: verdana;
+    cursor: pointer;
+    color: #868383;
+}
+
+/*about box*/
+.box12 {
+    top: 375px;
+    left: 380px;
+    padding: 12px;
+    background: white;
+    position: absolute;
+    width: 70px;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    height: 16px;
+    font-size: 16px;
+    font-family: verdana;
+    cursor: pointer;
+    color: #868383;
+}
+
+/*friends box*/
+.box13 {
+    top: 375px;
+    left: 480px;
+    padding: 12px;
+    background: white;
+    position: absolute;
+    width: 70px;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    height: 16px;
+    font-size: 16px;
+    font-family: verdana;
+    cursor: pointer;
+    color: #868383;
+}
+
+/*photos box*/
+.box14 {
+    top: 375px;
+    left: 580px;
+    padding: 12px;
+    background: white;
+    position: absolute;
+    width: 70px;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    height: 16px;
+    font-size: 16px;
+    font-family: verdana;
+    cursor: pointer;
+    color: #868383;
+}
+
+/*more box(select)*/
+select {
+    top: 375px;
+    left: 680px;
+    padding: 10px;
+    position: absolute;
+    width: 110px;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    height: 40px;
+    font-size: 16px;
+    font-family: verdana;
+    border: none;
+    color: #868383;
+    cursor: pointer;
+}
+
+/*writing post box*/
+.postpx {
+    top: 440px;
+    left: 350px;
+    position: absolute;
+    width: 600px;
+    height: 210px;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    display: none;
+}
+
+.postp {
+    top: 440px;
+    left: 350px;
+    position: absolute;
+    width: 600px;
+    height: 210px;
+    display: none;
+}
+
+#column-1 {
+    left: 0px;
+    top: 0px;
+    background: white;
+    width: 580px;
+    height: 200px;
+    border-radius: 3px/3px;
+    font-size: 15px;
+    font-family: verdana;
+    color: /*#1b6192*/ #09755D;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+#postpos {
+    left: 450px;
+    top: 170px;
+    width: 85px;
+    height: 30px;
+}
+
+#postboxpos {
+    top: 45px;
+    left: 10px;
+    height: 105px;
+    width: 580px;
+    z-index: 5;
+}
+
+#postbox {
+    height: 105px;
+    outline: none;
+    border: white;
+    background: #e9f0f2;
+    width: 580px;
+}
+
+#buttonpost {
+    width: 85px;
+    height: 30px;
+    border-radius: 4px/4px;
+    background: /*#142170*/ #09755D;
+    font-size: 15px;
+    outline: none;
+    color: white;
+}
+
+/*post 1(Mostafa AbdelFadil*/
+.post1px {
+    top: 660px;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    left: 350px;
+    display: none;
+    position: absolute;
+    width: 580px;
+    height: 600px;
+    border-radius: 3px/3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.post1p {
+    top: 660px;
+    left: 350px;
+    display: none;
+    position: absolute;
+    background: white;
+    width: 580px;
+    height: 600px;
+    border-radius: 3px/3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+#post2text {
+    left: 40px;
+    top: 0px;
+    padding-top: 10px;
+    height: 40px;
+    width: 400px;
+}
+
+#commentprof2 {
+    top: 560px;
+    left: 0px;
+    width: 30px;
+    height: 30px;
+}
+
+#commentboxpos2 {
+    top: 560px;
+    left: 40px;
+    width: 540px;
+    height: 30px;
+}
+
+#commentbox {
+    width: 540px;
+    height: 30px;
+}
+
+p1 {
+    color: /*#1b6192*/ #09755D;
+    font-family: verdana;
+    font-size: 15px;
+}
+
+p2 {
+    color: #868383;
+    font-family: verdana;
+    font-size: 15px;
+}
+
+p3 {
+    color: /*#1b6192*/ #09755D;
+    font-family: verdana;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+p4 {
+    color: #868383;
+    font-family: verdana;
+    font-size: 10px;
+}
+
+p6 {
+    color: /*#1b6192*/ #09755D;
+    font-family: verdana;
+    font-size: 15px;
+    word-spacing: 10px;
+}
+
+p7 {
+    font-size: 20px;
+    color: #868383;
+    font-family: verdana;
+}
+
+/*about pad*/
+.aboutpad {
+    left: 100px;
+    top: 440px;
+    background: white;
+    height: 360px;
+    width: 850px;
+    position: absolute;
+    display: none;
+}
+
+.aboutpadx {
+    left: 100px;
+    top: 440px;
+    display: none;
+    height: 360px;
+    width: 850px;
+    position: absolute;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+}
+
+/*leftside boxes in timeline*/
+.abox1 {
+    top: 440px;
+    left: 100px;
+    display: none;
+    position: absolute;
+    background: white;
+    width: 230px;
+    border-radius: 3px/3px;
+    height: 400px;
+}
+
+.abox1x {
+    top: 440px;
+    left: 100px;
+    display: none;
+    position: absolute;
+    width: 230px;
+    border-radius: 3px/3px;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    height: 400px;
+}
+
+.abox2 {
+    top: 860px;
+    left: 100px;
+    position: absolute;
+    background: white;
+    width: 230px;
+    border-radius: 3px/3px;
+    height: 250px;
+    display: none;
+}
+
+.abox2x {
+    top: 860px;
+    left: 100px;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    position: absolute;
+    background: white;
+    width: 230px;
+    display: none;
+    border-radius: 3px/3px;
+    height: 250px;
+}
+
+.abox3 {
+    top: 1130px;
+    left: 100px;
+    position: absolute;
+    background: white;
+    width: 230px;
+    display: none;
+    border-radius: 3px/3px;
+    height: 250px;
+}
+
+.abox3x {
+    top: 1130px;
+    left: 100px;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    position: absolute;
+    background: white;
+    width: 230px;
+    display: none;
+    border-radius: 3px/3px;
+    height: 250px;
+}
+
+/*friend pad*/
+.frnpad {
+    left: 100px;
+    top: 440px;
+    background: white;
+    height: 360px;
+    width: 850px;
+    position: absolute;
+    display: none;
+}
+
+.frnpadx {
+    left: 100px;
+    top: 440px;
+    display: none;
+    height: 360px;
+    width: 850px;
+    position: absolute;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+}
+
+/*photos pad*/
+.phpad {
+    left: 100px;
+    top: 440px;
+    background: white;
+    height: 360px;
+    width: 850px;
+    position: absolute;
+    display: none;
+}
+
+.phpadx {
+    left: 100px;
+    top: 440px;
+    display: none;
+    height: 360px;
+    width: 850px;
+    position: absolute;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+}
+
+/*.postp {
+    top: 440px;
+    left: 350px;
+    position: absolute;
+    width: 600px;
+    height: 210px;
+    display: none;
+}
+
+#column-1 {
+    left: 0px;
+    top: 0px;
+    background: white;
+    width: 580px;
+    height: 200px;
+    border-radius: 3px/3px;
+    font-size: 15px;
+    font-family: verdana;
+    color:  #09755D;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+#postpos {
+    left: 450px;
+    top: 170px;
+    width: 85px;
+    height: 30px;
+}
+
+#postboxpos {
+    top: 45px;
+    left: 10px;
+    height: 105px;
+    width: 580px;
+    z-index: 5;
+}
+
+#postbox {
+    height: 105px;
+    outline: none;
+    border: white;
+    background: #e9f0f2;
+    width: 580px;
+}
+
+#buttonpost {
+    width: 85px;
+    height: 30px;
+    border-radius: 4px/4px;
+    background:  #09755D;
+    font-size: 15px;
+    outline: none;
+    color: white;
+}*/
+
+/*chatbox rightside*/
+.chat-sidebar {
+    width: 200px;
+    position: fixed;
+    height: 605px;
+    right: 0px;
+    top: 60px;
+    background: #e9f0f2;
+}
+
+.chat-sidebarx {
+    width: 200px;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    position: fixed;
+    height: 605px;
+    right: 0px;
+    top: 60px;
+    background: #e9f0f2;
+}
+
+#chatnamebox {
+    width: 150px;
+    height: 30px;
+    top: 65px;
+    color: black;
+    font-size: 16px;
+    padding-top: 8px;
+    padding-left: 50px;
+}
+
+#chatnameboxp1 {
+    width: 30px;
+    height: 30px;
+    left: 5px;
+    position: absolute;
+    top: 8px;
+}
+
+#chatnameboxp2 {
+    width: 30px;
+    height: 30px;
+    left: 5px;
+    position: absolute;
+    top: 48px;
+}
+
+#chatnameboxp3 {
+    width: 30px;
+    height: 30px;
+    left: 5px;
+    position: absolute;
+    top: 88px;
+}
+
+#chatnameboxp4 {
+    width: 30px;
+    height: 30px;
+    left: 5px;
+    position: absolute;
+    top: 128px;
+}
+
+#chatnameboxp5 {
+    width: 30px;
+    height: 30px;
+    left: 5px;
+    position: absolute;
+    top: 168px;
+}
+
+#chatnameboxp6 {
+    width: 30px;
+    height: 30px;
+    left: 5px;
+    position: absolute;
+    top: 208px;
+}
+
+#chatnameboxp7 {
+    width: 30px;
+    height: 30px;
+    left: 5px;
+    position: absolute;
+    top: 248px;
+}
+
+#chatnamebox:hover {
+    background: #e1e5e6;
+}
+
+#chatnamebox1:hover {
+    background: #e1e5e6;
+}
+
+#chatnamebox2:hover {
+    background: #e1e5e6;
+}
+
+#chatnamebox3:hover {
+    background: #e1e5e6;
+}
+
+#chatnamebox4:hover {
+    background: #e1e5e6;
+}
+
+#chatnamebox5:hover {
+    background: #e1e5e6;
+}
+
+#chatnamebox6:hover {
+    background: #e1e5e6;
+}
+
+#chatnamebox1 {
+    width: 150px;
+    height: 30px;
+    top: 105px;
+    color: black;
+    padding-top: 8px;
+    padding-left: 50px;
+}
+
+#chatnamebox2 {
+    width: 150px;
+    height: 30px;
+    top: 145px;
+    color: black;
+    padding-top: 8px;
+    padding-left: 50px;
+}
+
+#chatnamebox3 {
+    width: 150px;
+    height: 30px;
+    top: 185px;
+    color: black;
+    padding-top: 8px;
+    padding-left: 50px;
+}
+
+#chatnamebox4 {
+    width: 150px;
+    height: 30px;
+    top: 225px;
+    color: black;
+    padding-top: 8px;
+    padding-left: 50px;
+}
+
+#chatnamebox5 {
+    width: 150px;
+    height: 30px;
+    top: 265px;
+    color: black;
+    padding-top: 8px;
+    padding-left: 50px;
+}
+
+#chatnamebox6 {
+    width: 150px;
+    height: 30px;
+    top: 305px;
+    color: black;
+    padding-top: 8px;
+    padding-left: 50px;
+}

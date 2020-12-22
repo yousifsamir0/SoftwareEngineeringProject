@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Profile',
+    'Accounts',
     'Timeline',
 ]
 
@@ -78,14 +79,10 @@ WSGI_APPLICATION = 'SocialMediaPF.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'SocialmediaPF',
-        'USER': 'postgres',
-        'PASSWORD': 'Joe123',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
 
 
 # Password validation
