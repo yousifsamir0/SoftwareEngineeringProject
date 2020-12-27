@@ -8,10 +8,7 @@ from .models import Profile, Relationship
 # created = true when user is created
 def auto_create_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
-        Profile.objects.get(user=instance).fName=instance.first_name
-        Profile.objects.get(user=instance).lName=instance.last_name
-        
+        Profile.objects.create(user=instance,fName=instance.first_name,lName=instance.last_name)        
 
 
 @receiver(post_save, sender=Relationship)

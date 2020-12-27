@@ -64,16 +64,12 @@
     </div>
 
     <!--post 1(Mostafa AbdelFadil)-->
-    <div class="post1px">
-    </div>
-    <div class="post1p">
-        <img src="{%static 'profile/prof.jpeg'%}" height="30" /><br><br><img src="{%static 'profile/wall.jpg'%}" height="411" width="580" /><br><br><p6>Like  Comment  Share</p6><br><hr><p1>Eslam Magdy</p1><p2> and</p2><p1> 5 others</p1><p2> like this</p2>
-        <div id="post2text" class="post1p"><p3>Mostafa AbdelFadil </p3><p2>with </p2><p1> Addo Mohamed</p1><p2> and</p2><p1> 15 others.</p1><br><p4>4 hrs.</p4></div>
-        <div id="commentprof2" class="post1p"><img src="{%static 'profile/prof.jpeg'%}" height="30" /></div>
-        <div id="commentboxpos2" class="post1p"><input type="textarea" placeholder="comment" id="commentbox" /></div>
-    </div>
-    </div>
+    {%for post in profile.get_posts%}
 
+    {%include 'posts/post.html' with post=post profile=profile%}
+    
+    {%endfor%}
+    <div>test2</div>
     <!--leftside boxes in timeline-->
     <div class="abox1">
     </div>

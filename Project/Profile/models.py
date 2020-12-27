@@ -18,7 +18,14 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username}---{self.created}'
-
+    def get_name(self):
+        return f'{self.fName} {self.lName}'
+    def get_friends_num(self):
+        return self.friends.all().count()
+    def get_friends(self):
+        return self.friends.all()
+    def get_posts(self):
+        return self.posts.all()
     def save(self, *args, **kwargs):
         slug_flag = False
 
@@ -33,16 +40,6 @@ class Profile(models.Model):
             slug = str(self.user.username)
         self.slug = slug
         super().save(*args, **kwargs)
-
-    def get_name(self):
-        return f'{self.fName} {self.lName}'
-
-    def get_friends_num(self):
-        return self.friends.all().count()
-
-    def get_friends(self):
-        return self.friends.all()
-
 
 class Relationship(models.Model):
     CHOICES = [

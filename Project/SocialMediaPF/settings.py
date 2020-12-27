@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Profile',
     'Accounts',
     'Timeline',
+    'Posts',
 ]
 
 MIDDLEWARE = [
