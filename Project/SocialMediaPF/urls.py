@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('Timeline.urls')),
     path('', include('Profile.urls')),
     path('', include('Accounts.urls')),
+    path('', include('Posts.urls')),
 
 ]
 
