@@ -12,3 +12,7 @@ class editProfileForm(forms.ModelForm):
             'avatar': 'Profile picture',
             'eMail': 'E-mail',
         }
+        widgets = {
+            'about': forms.Textarea(attrs={'cols': 80, 'rows': 3, 'style': 'resize:none;', }),
+
+        }

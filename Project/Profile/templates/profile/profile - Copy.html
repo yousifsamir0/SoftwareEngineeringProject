@@ -54,9 +54,7 @@
 
                                             {%for field in editform%}
                                             <div class="form-group">
-                                                <div class="d-flex justify-content-start">
-                                                    {{field.label_tag}}
-                                                </div>
+                                                {{field.label_tag}}
 
                                                 {% render_field field class="form-control" %}
                                             </div>
@@ -186,11 +184,9 @@
                 {%endif%}
                 <div class="p-2 rounded shadow-sm bg-light">
                     {%for post in profile.get_posts%}
-                    <div class="row posthead my-3">
-                        <div class="card col-sm-7 mx-auto">
-                            {%include 'posts/post.html' with post=post profile=profile user=user%}
-                        </div>
-                    </div>
+
+                    {%include 'posts/post.html' with post=post profile=profile user=user%}
+
                     {%endfor%}
                 </div>
             </div>

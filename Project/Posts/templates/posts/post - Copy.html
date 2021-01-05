@@ -1,0 +1,86 @@
+<!-- post here -->
+<div class="row posthead my-3">
+    <div id="postid" style="display: none;">{{post.pk}}</div>
+    <div class="card col-sm-7 mx-auto  ">
+        <div class="card-header bg-white">
+            <div class="row">
+                <div class="col">
+                    <!--  IMAGE PLACE -->
+                    <img src="{{post.author.avatar.url}}" class="rounded-circle mr-1" height="38" alt="Cinque Terre">
+                    <!--      USER   NAME -->
+                    <span><strong>{{post.author.get_name}}</strong></span>
+                    <span class="float-right text-muted">{{post.created}}</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{post.body}}</p>
+            <hr class="w-100">
+            {%if post.image%}
+            <img src="{{post.image.url}}" class="img-responsive">
+            {%endif%}
+
+            <hr class="w-100">
+            <div class="row ">
+                <div class="col-md-4">
+                    {%if user.profile in post.liked_by.all%}
+                    <button type="text" class="like-btn btn btn-outline-secondary active px-4 font-weight-bold">
+                        <i class="fa fa-thumbs-up mr-1" aria-hidden="true"></i>Dislike
+                    </button>
+                    {%else%}
+                    <button type="text" class="like-btn btn btn-outline-secondary px-4 font-weight-bold"><i
+                            class="fa fa-thumbs-up mr-1" aria-hidden="true"></i>Like</button>
+                    {%endif%}
+                </div>
+                <div class="col-md-4 comment-toggle">
+                    <button type="text" id="comment-toggle" class="btn btn-outline-secondary px-4 font-weight-bold"><i
+                            class="fa fa-comment mr-1" aria-hidden="true"></i>Comment</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="text" class="btn btn-outline-secondary px-5 font-weight-bold"><i
+                            class="fa fa-retweet mr-1" aria-hidden="true"></i>Share</button>
+                </div>
+            </div>
+            <hr>
+
+            <div class=" mb-2 mt-2 comment-toggle-1" id="comment-toggle-1" style="display: none;">
+
+                <!--                  WRITE comment HERE -->
+
+                <div class="form-group">
+                    <textarea name="" class="form-control commentfield" style="resize: none;"
+                        placeholder="Type your comment"></textarea>
+                </div>
+
+
+
+            </div>
+            <p id="comment-toggle-2" class="comment-toggle-2" style="cursor: pointer"><strong><span
+                        id="cmntnum">{{post.get_comments.count}}
+                    </span>Comments<i class="fa fa-chevron-circle-down ml-1 text-secondary"
+                        aria-hidden="true"></i></strong>
+            </p>
+            <p style="cursor: pointer"><strong>Likes : <span id="likenum">{{post.liked_by.all.count}}</span></strong>
+            </p>
+        </div>
+        <div id="comment-toggle-3" style="display: none;">
+            {%for comment in post.get_comments%}
+            <div class="my-2 mx-4 border rounded" style="background-color:#f8f9fa">
+                <div class="col mt-3">
+                    <img src="{{comment.author.avatar.url}}" class="rounded-circle mr-1" height="32" alt="Cinque Terre">
+                    <!--      USER   NAME OF COMMENT AUTHOR -->
+                    <span>{{comment.author.get_name}}</span>
+                    <span class="float-right text-muted">{{comment.created}}</span>
+                </div>
+                <!-- write COMMENTS HERE -->
+                <div class="col-sm">
+                    <p class="p-2">
+                        {{comment.body}}
+                    </p>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</div>

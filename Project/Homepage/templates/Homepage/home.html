@@ -1,0 +1,68 @@
+{%extends 'base.html'%}
+{%block title%}SocialMediaP{%endblock%}
+{%block body%}
+<div class="row">
+    <!-- left section-->
+    <div class="col-sm-3   ml-3   p-3  bg-white  overflow-hidden">
+        <div class="row">
+            <div class="col-12">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                        aria-controls="v-pills-home" aria-selected="true"><img src="user.svg" height="30"> Profile</a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false"> <img src="team.svg" height="30">
+                        Groups</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                        aria-controls="v-pills-messages" aria-selected="false"><img src="page.svg" height="30">Pages</a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                        aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- middle section-->
+    <div class="col-sm-5 ml-3">
+        <!-- CARD TO create YOUR POSTS -->
+        <!--<div class="row card border rounded mb-3 mt-3 shadow-sm">   -->
+        <div class="row card border rounded mb-3 mt-3 shadow-sm">
+            <!-- CARD TO create YOUR POSTS -->
+
+            <form action="" method="POST" enctype="multipart/form-data" class=" border shadow-sm">
+                {%csrf_token%}
+                <div class="form-group mx-3 my-3">
+                    <label for="exampleFormControlTextarea1" class="font-weight-bold mx-1 my -2">Share
+                        Your Post with
+                        other</label>
+                    {{postform}}
+
+                    <div class="form-group my-3">
+                        <button type="submit" class="btn btn-primary  btn-wid block" value="Post">Post
+                            Now</button><span class="text-muted">Remember Make Others Happy With Your
+                            Posts!</span>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <!--  card  POSTS -->
+        {%for post in allposts%}
+        <div class="row card posthead my-3">
+            {%include 'posts/post.html' with post=post user=user%}
+        </div>
+        {%endfor%}
+        <!--end POSTS-->
+    </div>
+    <!-- right section-->
+    <div class="col-sm border   mx-3 mt-3  shadow-sm p-3  bg-white rounded overflow-hidden">
+        <div class="row">
+            CHATTING BOX
+        </div>
+
+    </div>
+
+</div>
+{%endblock%}
+{%block script%}
+{%include 'posts/script.html'%}
+{%endblock%}
