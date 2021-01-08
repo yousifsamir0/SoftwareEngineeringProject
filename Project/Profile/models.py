@@ -31,15 +31,15 @@ class Profile(models.Model):
         return self.friends.all()
 
     def get_posts(self):
-        return self.posts.all()
+        return self.posts.all().filter(group=None)
 
     def save(self, *args, **kwargs):
         slug_flag = False
 
         if self.fName and self.lName:
             slug = slugify(str(self.fName) + '-' + str(self.lName))
-            slug_flag = Profile.objects.exclude(
-                user=self.user).filter(slug=slug).exists()
+            slug_flag = Profile.objects.filter(
+                slug=slug).exclude(user=self.user).exists()
             #slug_flag = Profile.objects.filter(slug=slug).exists()
 
             while slug_flag:

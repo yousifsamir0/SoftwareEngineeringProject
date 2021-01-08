@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
 from Profile.models import Profile
+from Groups.models import Group
 
 # Create your models here.
 
@@ -15,6 +16,7 @@ class Post(models.Model):
     liked_by = models.ManyToManyField(
         Profile, blank=True, related_name='liked_posts')
     created = models.DateTimeField(auto_now_add=True)
+    group=models.ForeignKey(Group,on_delete=models.CASCADE,null=True,blank=True,related_name='groupposts')
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):

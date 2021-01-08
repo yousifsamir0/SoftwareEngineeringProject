@@ -6,9 +6,11 @@
     <div class="row">
         <div class="col">
             <!--  IMAGE PLACE -->
-            <img src="{{post.author.avatar.url}}" class="rounded-circle mr-1" height="38" alt="Cinque Terre">
+            <a href="{%url 'Profile:profile' post.author.slug %}"><img src="{{post.author.avatar.url}}"
+                    class="rounded-circle mr-1" height="38"></a>
             <!--      USER   NAME -->
-            <span><strong>{{post.author.get_name}}</strong></span>
+            <a
+                href="{%url 'Profile:profile' post.author.slug %}"><span><strong>{{post.author.get_name}}</strong></span></a>
             <span class="float-right text-muted">{{post.created}}</span>
         </div>
 

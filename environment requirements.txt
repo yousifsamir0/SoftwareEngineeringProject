@@ -1,0 +1,4 @@
+-python version 3.x
+-django module 
+-pillow module
+-django-widget-tweaks

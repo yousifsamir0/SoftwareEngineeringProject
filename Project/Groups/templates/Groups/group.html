@@ -1,0 +1,340 @@
+{%extends 'base.html'%}
+{%load widget_tweaks%}
+{%block title%}{{group.name}}{%endblock%}
+{%block body%}
+<div class="bg-white shadow overflow-hidden">
+
+    <!-- 							cover    start -->
+    <div class="px-4 pt-0 pb-4 cover">
+        <div class="media align-items-end profile-head">
+            <div class="profile mr-3 mb-2"><img src="{{group.avatar.url}}" alt="profile picture" width="130"
+                    class="rounded mb-2 img-thumbnail">
+                <h2 class="btn btn-primary  btn-block active">{{group.name}}</h2>
+            </div>
+        </div>
+    </div>
+    <!--      cover    end -->
+
+    <div class="bg-light p-4 d-flex justify-content-center text-center">
+        <ul class="list-inline  mb-0 p-2">
+            {%if user.profile == group.owner %}
+            <li class="list-inline-item mx-5">
+                <h5 class="reqscount font-weight-bold mb-0 d-block">{{reqs.count}}</h5>
+                <button type="button" data-toggle="modal" data-target="#exampleModalCenter3" class="btn">
+                    <small class="text-muted"> <i class="fa fa-users mr-1"></i>Join requests</small>
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Group Members</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {%for req in reqs%}
+                                <div class="d-flex justify-content-sm-between border my-3 p-2">
+                                    <div class="d-flex justify-content-sm-around">
+                                        <!--  IMAGE PLACE -->
+                                        <a href="{%url 'Profile:profile' req.sender.slug %}"><img
+                                                src="{{req.sender.avatar.url}}" class="rounded-circle mr-1"
+                                                height="38"></a>
+                                        <!--      USER   NAME -->
+                                        <a
+                                            href="{%url 'Profile:profile' req.sender.slug %}"><span><strong>{{req.sender.get_name}}</strong></span></a>
+                                    </div>
+
+                                    <div class="reqscontainer">
+                                        <button type="button" class="acceptbtn btn btn-success">Accept <span
+                                                style="display: none;">{{req.sender.slug}}</span></button>
+                                        <button type="button" class="refusebtn btn btn-danger">Refuse <span
+                                                style="display: none;">{{req.sender.slug}}</span></button>
+                                    </div>
+
+
+
+                                </div>
+                                {%endfor%}
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end MODAL -->
+            </li>
+            {%endif%}
+            <li class="list-inline-item mx-5">
+                <h5 class="font-weight-bold mb-0 d-block">{{posts.count}}</h5><small class="text-muted">
+                    <i class="fa fa-pencil-square-o mr-1"></i>Posts</small>
+            </li>
+
+            <li class="list-inline-item mx-5">
+                <h5 class="memberscount font-weight-bold mb-0 d-block">{{members.count}}</h5>
+                <button type="button" data-toggle="modal" data-target="#exampleModalCenter2" class="btn">
+                    <small class="text-muted"> <i class="fa fa-users mr-1"></i>members</small>
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Group Members</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {%for member in members%}
+                                <div class="d-flex justify-content-sm-between border my-3 p-2">
+                                    <div class="d-flex justify-content-sm-around">
+                                        <!--  IMAGE PLACE -->
+                                        <a href="{%url 'Profile:profile' member.slug %}"><img
+                                                src="{{member.avatar.url}}" class="rounded-circle mr-1" height="38"></a>
+                                        <!--      USER   NAME -->
+                                        <a
+                                            href="{%url 'Profile:profile' member.slug %}"><span><strong>{{member.get_name}}</strong></span></a>
+                                    </div>
+                                    {%if user == group.owner.user %}
+
+                                    {%if member == group.owner %}
+                                    <div class="text-success">Group Owner</div>
+                                    {%else%}
+                                    <button type="button" class="removebtn btn btn-danger">Remove <span
+                                            style="display: none;">{{member.slug}}</span></button>
+
+                                    {%endif%}
+                                    {%else%}
+                                    {%if member == group.owner %}
+                                    <div class="text-success">Group Owner</div>
+                                    {%endif%}
+                                    {%endif%}
+
+                                </div>
+                                {%endfor%}
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end MODAL -->
+            </li>
+
+
+            {% if user == group.owner.user %}
+            <li class="list-inline-item ml-5">
+                <button type="button" data-toggle="modal" data-target="#exampleModalCenter1"
+                    class="btn btn-outline-primary">Edit Group info</button>
+                <button type="button" data-toggle="modal" data-target="#exampleModalCenter2"
+                    class="btn btn-outline-primary">Manage Members</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Update your Group info</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" method="POST" class="form" enctype="multipart/form-data">
+                                    {% csrf_token %}
+
+                                    {%for field in editform%}
+                                    <div class="form-group">
+                                        <div class="d-flex justify-content-start">
+                                            {{field.label_tag}}
+                                        </div>
+
+                                        {% render_field field class="form-control" %}
+                                    </div>
+                                    {%endfor%}
+
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end MODAL -->
+            </li>
+            {%else%}
+            {%if user.profile not in members%}
+
+            {%if is_requested %}
+            <li class="list-inline-item ml-5">
+                <a href="{%url 'Groups:cancelrequest' group.slug%}"><button class="btn btn-outline-primary">Cancel
+                        Request</button></a>
+            </li>
+            {%else%}
+            <li class="list-inline-item ml-5">
+                <a href="{%url 'Groups:join' group.slug%}"><button class="btn btn-outline-primary">Join
+                        Group</button></a>
+            </li>
+            {%endif%}
+            {%else%}
+            <li class="list-inline-item ml-5">
+                <a href="{%url 'Groups:leave' group.slug%}"><button class="btn btn-outline-danger">Leave
+                        Group</button></a>
+            </li>
+
+
+            {%endif%}
+
+            {%endif%}
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <!-- left section-->
+    <div class="col-sm-3   ml-3   p-3  bg-white  overflow-hidden">
+        <div class="row">
+            <div class="col-12">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false"> Groups</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- middle section-->
+    <div class="col-sm-5 ml-3">
+        <!-- CARD TO create YOUR POSTS -->
+        <!--<div class="row card border rounded mb-3 mt-3 shadow-sm">   -->
+        <div class="row card border rounded mb-3 mt-3 shadow-sm">
+            <!-- CARD TO create YOUR POSTS -->
+
+            <form action="" method="POST" enctype="multipart/form-data" class=" border shadow-sm">
+                {%csrf_token%}
+                <div class="form-group mx-3 my-3">
+                    <label for="exampleFormControlTextarea1" class="font-weight-bold mx-1 my -2">Share
+                        Your Post with
+                        group members</label>
+                    {{postform}}
+
+                    <div class="form-group my-3">
+                        <button type="submit" class="btn btn-primary  btn-wid block" value="Post">Post
+                            Now</button><span class="text-muted">Remember Make Others Happy With Your
+                            Posts!</span>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <!--  card  POSTS -->
+        {%for post in posts%}
+        <div class="row card posthead my-3">
+            {%include 'posts/post.html' with post=post user=user%}
+        </div>
+        {%endfor%}
+        <!--end POSTS-->
+    </div>
+    <!-- right section-->
+    <div class="col-sm border   mx-3 mt-3  shadow-sm p-3  bg-white rounded overflow-hidden">
+        <div class="row">
+            <div class="container ">
+                <div class="title   mb-3">
+                    <h3 class="border d-inline py-2 px-3 rounded"> Group Description</h3>
+                </div>
+                <div class="descriptions-body ml-3">
+                    <p class="mt-4">{{group.description}}</p>
+                </div>
+                <hr class="w-100">
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+{%endblock%}
+{%block script%}
+<script>
+    $(document).ready(function () {
+        $(".removebtn").click(function () {
+
+            var memberslug = $(this).find("span").text();
+            var that = this;
+            var memcount = $(".memberscount").text();
+            var newcount = (parseInt(memcount, 10) - 1);
+            $.ajax({
+                url: "{% url 'Groups:removemember' group.slug %}",
+                type: "GET",
+                data: {
+                    "memberslug": memberslug,
+                },
+                success: function (req) {
+                    $(that).addClass("btn-light").removeClass("btn-danger");
+                    $(that).html('<span class="text-muted">Removed</span>')
+                    $(that).removeClass("removebtn");
+                    $(".memberscount").text(newcount);
+
+                }
+            });
+
+
+        });
+        $(".acceptbtn").click(function () {
+
+            let reqslug = $(this).find("span").text();
+            console.log(reqslug);
+            let that = this;
+            let reqcount = $(".reqscount").text();
+            let newcount = (parseInt(reqcount, 10) - 1);
+            $(this).closest(".reqscontainer").find(".refusebtn").remove();
+            $.ajax({
+                url: "{% url 'Groups:acceptreq' group.slug %}",
+                type: "GET",
+                data: {
+                    "reqslug": reqslug,
+                },
+                success: function (req) {
+                    console.log("accepted")
+                    $(that).addClass("btn-light").removeClass("btn-success");
+                    $(that).html('<span class="text-success">Accepted</span>')
+                    $(that).removeClass("acceptbtn");
+                    $(".reqscount").text(newcount);
+
+                }
+            });
+        });
+        $(".refusebtn").click(function () {
+
+            let reqslug = $(this).find("span").text();
+            let that = this;
+            let reqcount = $(".reqscount").text();
+            let newcount = (parseInt(reqcount, 10) - 1);
+            $(this).closest(".reqscontainer").find(".acceptbtn").remove();
+            $.ajax({
+                url: "{% url 'Groups:refusereq' group.slug %}",
+                type: "GET",
+                data: {
+                    "reqslug": reqslug,
+                },
+                success: function (req) {
+                    $(that).addClass("btn-light").removeClass("btn-danger");
+                    $(that).html('<span class="text-danger">Refused</span>')
+                    $(that).removeClass("refusebtn");
+                    $(".reqscount").text(newcount);
+
+                }
+            });
+
+
+        });
+    });
+</script>
+{%endblock%}

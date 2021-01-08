@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Accounts',
     'Posts',
     'Homepage',
+    'Groups',
     'widget_tweaks',
 ]
 
