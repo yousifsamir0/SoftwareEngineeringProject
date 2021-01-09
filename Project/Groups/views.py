@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Group, Grouprequest
 from Posts.forms import postform
-from .forms import editGroupForm
+from .forms import GroupForm
 from Profile.models import Profile
 from django.http import JsonResponse
 
@@ -12,18 +12,13 @@ from django.http import JsonResponse
 def group(request, slug):
 
     group = Group.objects.get(slug=slug)
-    editform = editGroupForm(
+    editform = GroupForm(
         request.POST or None, request.FILES or None, instance=group)
     mypostform = postform(request.POST or None, request.FILES or None)
+    newgroupform = GroupForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
         if editform.is_valid():
             editform.save()
-            return redirect('Groups:group', group.slug)
-        if mypostform.is_valid():
-            post = mypostform.save(commit=False)
-            post.author = request.user.profile
-            post.group = group
-            post.save()
             return redirect('Groups:group', group.slug)
     groupPosts = group.get_posts()
     user = request.user
@@ -31,6 +26,7 @@ def group(request, slug):
     is_requested = len(Grouprequest.objects.filter(
         group=group).filter(sender=user.profile))
     grouprequests = group.reqs.all()
+    groups = user.profile.get_groups()
     context = {
         'group': group,
         'user': user,
@@ -40,6 +36,8 @@ def group(request, slug):
         'editform': editform,
         'postform': mypostform,
         'reqs': grouprequests,
+        'groups': groups,
+        'newgroupform': newgroupform,
     }
     return render(request, 'Groups/group.html', context)
 

@@ -9,12 +9,10 @@
             <div class="col-12">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <hr class="w-100 m-0">
-
                     <button class="noborder btn btn-outline-primary text-sm-left my-1 text-dark px-2 py-1"
                         onclick="window.location.href='{%url 'Homepage:savedposts'%}'">
                         <strong>Saved Posts</strong>
                     </button>
-
                     <hr class="w-100 m-0">
                     <div class="px-2 py-1 list-group"><strong> Groups</strong>
                     </div>
@@ -81,30 +79,13 @@
     </div>
     <!-- middle section-->
     <div class="col-sm-5 ml-3">
-        <!-- CARD TO create YOUR POSTS -->
-        <!--<div class="row card border rounded mb-3 mt-3 shadow-sm">   -->
-        <div class="row card border rounded mb-3 mt-3 shadow-sm">
-            <!-- CARD TO create YOUR POSTS -->
-
-            <form action="{%url 'Posts:hpost'%}" method="POST" enctype="multipart/form-data" class=" border shadow-sm">
-                {%csrf_token%}
-                <div class="form-group mx-3 my-3">
-                    <label for="exampleFormControlTextarea1" class="font-weight-bold mx-1 my -2">Share
-                        Your Post with
-                        other</label>
-                    {{postform}}
-
-                    <div class="form-group my-3">
-                        <button type="submit" class="btn btn-primary  btn-wid block" value="Post">Post
-                            Now</button><span class="text-muted">Remember Make Others Happy With Your
-                            Posts!</span>
-                    </div>
-                </div>
-            </form>
-
+        <div class="  my-3 title ">
+            <hr class="w-100 m-0 p-0">
+            <h3>Saved Posts</h3>
+            <hr class="w-100 m-0 p-0">
         </div>
         <!--  card  POSTS -->
-        {%for post in allposts%}
+        {%for post in savedposts%}
         <div class="row card posthead my-3">
             {%include 'posts/post.html' with post=post user=user%}
         </div>

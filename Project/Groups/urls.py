@@ -5,6 +5,7 @@ app_name = 'Groups'
 
 urlpatterns = [
 
+
     path('Groups/<str:slug>/', views.group, name='group'),
     path('Groups/join/<str:slug>/', views.join, name='join'),
     path('Groups/cancel/<str:slug>/', views.cancelrequest, name='cancelrequest'),

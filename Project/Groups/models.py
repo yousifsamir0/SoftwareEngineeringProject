@@ -13,9 +13,10 @@ class Group(models.Model):
     avatar = models.ImageField(
         default='avatars/groups/avatar.png', upload_to='avatars/groups/', blank=False)
     owner = models.ForeignKey(Profile, blank=False,
-                              on_delete=models.CASCADE, related_name='mygroups')
+                              on_delete=models.CASCADE, related_name='myowngroups')
     description = models.TextField(max_length=500, blank=True)
-    members = models.ManyToManyField(Profile, blank=True)
+    members = models.ManyToManyField(
+        Profile, blank=True, related_name='mygroups')
     created = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True, blank=True)
 

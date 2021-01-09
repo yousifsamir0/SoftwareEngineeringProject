@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from random import randint
+
 # Create your models here.
 
 
@@ -32,6 +33,12 @@ class Profile(models.Model):
 
     def get_posts(self):
         return self.posts.all().filter(group=None)
+
+    def get_saved_posts(self):
+        return self.savedposts.all()
+
+    def get_groups(self):
+        return self.mygroups.all()
 
     def save(self, *args, **kwargs):
         slug_flag = False

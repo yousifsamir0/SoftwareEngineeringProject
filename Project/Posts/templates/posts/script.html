@@ -100,5 +100,32 @@
             }
         });
     });
+    $(".savebtn").click(function () {
+        var that = this;
+        $.ajax({
+            url: "{%url 'Posts:savepost'%}",
+            type: "GET",
+            data: {
+                postpk: $(this).closest(".posthead").find("#postid").text(),
+            },
+            success: function (res) {
+                if (res.issaved) {
+
+                    $(that).addClass("active");
+                    $(that).text("");
+                    $(that).append('<i class="bi bi-star-fill mr-1" aria-hidden="true"></i>Saved');
+
+                }
+                else {
+                    $(that).removeClass("active");
+                    $(that).text("");
+                    $(that).append('<i class="bi bi-star mr-1" aria-hidden="true"></i>Save Post');
+                }
+
+
+
+            }
+        });
+    });
 
 </script>

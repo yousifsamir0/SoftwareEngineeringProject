@@ -23,11 +23,6 @@ def profile(request, slug='myprofile'):
         if editform.is_valid():
             editform.save()
             return redirect('Profile:myprofile')
-        if mypostform.is_valid():
-            post=mypostform.save(commit=False)
-            post.author=request.user.profile
-            post.save()
-            return redirect('Profile:myprofile')
 
     profile = Profile.objects.get(slug=slug)
     user = request.user

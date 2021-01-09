@@ -18,8 +18,6 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     group = models.ForeignKey(
         Group, on_delete=models.CASCADE, null=True, blank=True, related_name='groupposts')
-    saved_by = models.ManyToManyField(
-        Profile, blank=True, related_name='savedposts')
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):

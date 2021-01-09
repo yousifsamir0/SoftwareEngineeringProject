@@ -5,4 +5,6 @@ app_name = 'Homepage'
 
 urlpatterns = [
     path('', views.Home, name='homepage'),
+    path('saved/', views.savedposts, name='savedposts'),
+
 ]

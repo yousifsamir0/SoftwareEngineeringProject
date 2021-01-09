@@ -44,3 +44,6 @@ body {
 .card-text{
 	margin-top: 0px !important;
 }
+.noborder{
+  border:0px !important;
+}

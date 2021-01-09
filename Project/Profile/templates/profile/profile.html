@@ -163,7 +163,8 @@
                     <div class="col-7 mx-auto">
 
                         <div class="row card border rounded mb-3 mt-3 shadow-sm">
-                            <form action="" method="POST" enctype="multipart/form-data" class=" border shadow-sm">
+                            <form action="{%url 'Posts:ppost'%}" method="POST" enctype="multipart/form-data"
+                                class=" border shadow-sm">
                                 {%csrf_token%}
                                 <div class="form-group mx-3 my-3">
                                     <label for="exampleFormControlTextarea1" class="font-weight-bold mx-1 my -2">Share
