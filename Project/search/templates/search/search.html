@@ -1,0 +1,154 @@
+{%extends 'base.html'%}
+{%load widget_tweaks%}
+{%block title%}SocialMediaP{%endblock%}
+{%block body%}
+<div class="row">
+    <!-- left section-->
+    <div class="col-sm-3   ml-3   p-3  bg-white  overflow-hidden">
+        <div class="row">
+            <div class="col-12">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <hr class="w-100 m-0">
+                    <button class="noborder btn btn-outline-primary text-sm-left my-1 text-dark px-2 py-1"
+                        onclick="window.location.href='{%url 'Homepage:savedposts'%}'">
+                        <strong>Saved Posts</strong>
+                    </button>
+                    <hr class="w-100 m-0">
+                    <div class="px-2 py-1 list-group"><strong> Groups</strong>
+                    </div>
+                    <ul>
+                        <li class="noborder list-group-item p-0 m-0">
+                            <button data-toggle="modal" data-target="#groupmodal"
+                                class="creategroup noborder btn btn-outline-primary text-sm-left my-1 text-dark container">
+                                <span class=""><i class="bi bi-plus-circle mr-4 text-success"></i>Create New
+                                    Group</span>
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="groupmodal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Group Members</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{%url 'Homepage:homepage'%}" method="POST" class="form"
+                                                enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                {%for field in newgroupform%}
+                                                <div class="form-group">
+                                                    <div class="d-flex justify-content-start">
+                                                        {{field.label_tag}}
+                                                    </div>
+
+                                                    {% render_field field class="form-control" %}
+                                                </div>
+                                                {%endfor%}
+
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-success">Create</button>
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end MODAL -->
+                        </li>
+                        {%for group in groups%}
+                        <a href="{%url 'Groups:group' group.slug %}">
+                            <li class="noborder list-group-item p-0 m-0">
+                                <div class="noborder btn btn-outline-primary text-sm-left my-1 text-dark container">
+                                    <img class="rounded-circle mr-1" src="{{group.avatar.url}}" height="30px"
+                                        alt="group picture"><span class="ml-3">{{group.name}}</span>
+                                </div>
+                            </li>
+                        </a>
+                        {%endfor%}
+                    </ul>
+                    <hr class="w-100 m-0">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- middle section-->
+    <div class="col-sm-5 ml-3">
+        <div class="  my-3 title ">
+            <hr class="w-100 m-0 p-0">
+            <h3>Search results</h3>
+            <hr class="w-100 m-0 p-0">
+        </div>
+        <!--  card  POSTS -->
+        <ul class="nav nav-pills" role="tablist">
+            <li role="presentation"><button id="profile" type="button" class="btn btn-primary">
+                    Profiles <span class="pbadge badge bg-secondary text-white">{{profiles.count}}</span>
+                </button>
+            </li>
+            <li role="presentation"><button id="group" type="button" class=" btn btn-outline-primary">
+                    Groups <span class="gbadge badge bg-secondary text-white">{{sgroups.count}}</span>
+                </button>
+            </li>
+        </ul>
+        <div class="profilediv ">
+            {%for profile in profiles%}
+            <div class="container row my-3">
+                <div class="profile">
+                    <a href="{%url 'Profile:profile' profile.slug %}"><img height="50" src="{{profile.avatar.url}}"
+                            alt="profile picture"></a>
+                    <a href="{%url 'Profile:profile' profile.slug %}"><span class="ml-3">{{profile.get_name}}</span></a>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+        <div class="groupdiv " style="display: none;">
+            {%for group in sgroups%}
+            <div class="container row my-3">
+                <div class="groupss">
+                    <a href="{%url 'Groups:group' group.slug %}"><img height="50" src="{{group.avatar.url}}"
+                            alt="profile picture"></a>
+                    <a href="{%url 'Groups:group' group.slug %}"><span class="ml-3">{{group.name}}</span></a>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+        <!--end POSTS-->
+    </div>
+    <!-- right section-->
+    <div class="col-sm border   mx-3 mt-3  shadow-sm p-3  bg-white rounded overflow-hidden">
+        <div class="row">
+            CHATTING BOX
+        </div>
+
+    </div>
+
+</div>
+{%endblock%}
+{%block script%}
+{%include 'posts/script.html'%}
+<script>
+    $(document).ready(function () {
+        $("#profile").click(function () {
+            $(".profilediv").css("display", "block");
+            $(".groupdiv").css("display", "none");
+            $(this).addClass("btn-primary").removeClass("btn-outline-primary");
+            $("#group").addClass("btn-outline-primary").removeClass("btn-primary");
+
+        });
+        $("#group").click(function () {
+            $(".profilediv").css("display", "none");
+            $(".groupdiv").css("display", "block");
+            $(this).addClass("btn-primary").removeClass("btn-outline-primary");
+            $("#profile").addClass("btn-outline-primary").removeClass("btn-primary");
+
+        });
+    });
+
+</script>
+{%endblock%}

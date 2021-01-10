@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('Posts.urls')),
     path('', include('Homepage.urls')),
     path('', include('Groups.urls')),
+    path('', include('search.urls')),
 
 ]
 
