@@ -9,7 +9,7 @@ from .models import Profile, FriendRequest
 def auto_create_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(
-            user=instance, fName=instance.first_name, lName=instance.last_name)
+            user=instance, fName=instance.first_name, lName=instance.last_name, eMail=instance.email)
 
 
 # @receiver(post_save, sender=FriendRequest)

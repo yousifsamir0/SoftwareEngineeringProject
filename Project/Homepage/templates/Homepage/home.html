@@ -114,10 +114,23 @@
     <!-- right section-->
     <div class="col-sm border   mx-3 mt-3  shadow-sm p-3  bg-white rounded overflow-hidden">
         <div class="row">
-            CHATTING BOX
-        </div>
+            <div class=" ml-2 my-1 title ">
 
+                <h3>Egyptian Premier League - Today: </h3>
+
+            </div>
+            <hr class="w-100 m-0 mb-2 p-0">
+            {%for match in matches%}
+            {%include 'Homepage/match.html' with match=match %}
+            {%endfor%}
+
+
+
+
+        </div>
     </div>
+
+</div>
 
 </div>
 {%endblock%}

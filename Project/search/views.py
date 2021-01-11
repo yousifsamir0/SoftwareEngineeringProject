@@ -19,8 +19,7 @@ def searchpage(request, query):
     newgroupform = GroupForm(request.POST or None, request.FILES or None)
     groups = user.profile.get_groups()
     Profiles = Profile.objects.filter(
-        Q(fName__startswith=query) | Q(slug__icontains=query) | Q(
-            eMail=query) | Q(fName__icontains=query))
+        Q(name__startswith=query) | Q(eMail=query))
     sgroups = Group.objects.filter(
         Q(name__startswith=query) | Q(description__icontains=query))
 

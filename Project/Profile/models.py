@@ -10,6 +10,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     fName = models.CharField(max_length=50)
     lName = models.CharField(max_length=50)
+    name = models.CharField(max_length=100, blank=True)
     eMail = models.CharField(max_length=50)
     avatar = models.ImageField(
         default='avatars/avatar.png', upload_to='avatars/', blank=False)
@@ -56,6 +57,8 @@ class Profile(models.Model):
         else:
             slug = str(self.user.username)
         self.slug = slug
+        self.name = f"{self.fName} {self.lName}"
+
         super().save(*args, **kwargs)
 
 

@@ -1,0 +1,163 @@
+{%extends 'base.html'%}
+{%load widget_tweaks%}
+{%block title%}SocialMediaP{%endblock%}
+{%block body%}
+<div class="row">
+    <!-- left section-->
+    <div class="col-sm-3   ml-3   p-3  bg-white  overflow-hidden">
+        <div class="row">
+            <div class="col-12">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <hr class="w-100 m-0">
+
+                    <button class="noborder btn btn-outline-primary text-sm-left my-1 text-dark px-2 py-1"
+                        onclick="window.location.href='{%url 'Homepage:savedposts'%}'">
+                        <strong>Saved Posts</strong>
+                    </button>
+
+                    <hr class="w-100 m-0">
+                    <div class="px-2 py-1 list-group"><strong> Groups</strong>
+                    </div>
+                    <ul>
+                        <li class="noborder list-group-item p-0 m-0">
+                            <button data-toggle="modal" data-target="#groupmodal"
+                                class="creategroup noborder btn btn-outline-primary text-sm-left my-1 text-dark container">
+                                <span class=""><i class="bi bi-plus-circle mr-4 text-success"></i>Create New
+                                    Group</span>
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="groupmodal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Group Members</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="" method="POST" class="form" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                {%for field in newgroupform%}
+                                                <div class="form-group">
+                                                    <div class="d-flex justify-content-start">
+                                                        {{field.label_tag}}
+                                                    </div>
+
+                                                    {% render_field field class="form-control" %}
+                                                </div>
+                                                {%endfor%}
+
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-success">Create</button>
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end MODAL -->
+                        </li>
+                        {%for group in groups%}
+                        <a href="{%url 'Groups:group' group.slug %}">
+                            <li class="noborder list-group-item p-0 m-0">
+                                <div class="noborder btn btn-outline-primary text-sm-left my-1 text-dark container">
+                                    <img class="rounded-circle mr-1" src="{{group.avatar.url}}" height="30px"
+                                        alt="group picture"><span class="ml-3">{{group.name}}</span>
+                                </div>
+                            </li>
+                        </a>
+                        {%endfor%}
+                    </ul>
+                    <hr class="w-100 m-0">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- middle section-->
+    <div class="col-sm-5 ml-3">
+        <!-- CARD TO create YOUR POSTS -->
+        <!--<div class="row card border rounded mb-3 mt-3 shadow-sm">   -->
+        <div class="row card border rounded mb-3 mt-3 shadow-sm">
+            <!-- CARD TO create YOUR POSTS -->
+
+            <form action="{%url 'Posts:hpost'%}" method="POST" enctype="multipart/form-data" class=" border shadow-sm">
+                {%csrf_token%}
+                <div class="form-group mx-3 my-3">
+                    <label for="exampleFormControlTextarea1" class="font-weight-bold mx-1 my -2">Share
+                        Your Post with
+                        other</label>
+                    {{postform}}
+
+                    <div class="form-group my-3">
+                        <button type="submit" class="btn btn-primary  btn-wid block" value="Post">Post
+                            Now</button><span class="text-muted">Remember Make Others Happy With Your
+                            Posts!</span>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <!--  card  POSTS -->
+        {%for post in allposts%}
+        <div class="row card posthead my-3">
+            {%include 'posts/post.html' with post=post user=user%}
+        </div>
+        {%endfor%}
+        <!--end POSTS-->
+    </div>
+    <!-- right section-->
+    <div class="col-sm border   mx-3 mt-3  shadow-sm p-3  bg-white rounded overflow-hidden">
+        <div class="row">
+            <hr class="w-100 m-0 p-0">
+            <div class="  my-1 title ">
+
+                <h3>Today's match results: </h3>
+
+            </div>
+            <hr class="w-100 m-0 p-0">
+            <div class="card match-container my-3 col-12" style="background-color: #a1cbff;">
+                <div class="d-flex flex-row justify-content-between">
+                    <div class="left-club-container d-flex flex-column">
+                        <div class="club-img" style="height:60px">
+                            <img src="//ssl.gstatic.com/onebox/media/sports/logos/_880UCbaux4wc8GngA9SLw_96x96.png"
+                                style="height:60px;">
+                        </div>
+                        <div class="club-name">
+                            <div class=""><span>Pyramids</span></div>
+                        </div>
+                    </div>
+                    <div class="score-container flex-column d-flex justify-content-center ">
+                        <div class="score rounded" ">
+                            <div class=" d-flex flex-row">
+                            <div class="h4  ">1</div>
+                            <div class="mx-4 h4 ">-</div>
+                            <div class="h4 ">1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-club-container d-flex flex-column">
+                    <div class="club-img" style="height:60px">
+                        <img src="//ssl.gstatic.com/onebox/media/sports/logos/_880UCbaux4wc8GngA9SLw_96x96.png"
+                            style="height:60px">
+                    </div>
+                    <div class="club-name">
+                        <div class=""><span>Pyramids</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+{%endblock%}
+{%block script%}
+{%include 'posts/script.html'%}
+{%endblock%}

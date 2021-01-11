@@ -3,6 +3,7 @@ from Posts.models import Post, Comment
 from Groups.models import Group
 from Posts.forms import postform
 from Groups.forms import GroupForm
+from .models import Match
 from django.contrib.auth.decorators import login_required
 
 
@@ -25,6 +26,7 @@ def Home(request):
     user = request.user
     friends = user.profile.get_friends()
     groups = user.profile.get_groups()
+    matches = Match.objects.all()
     # --------------------get all related posts------------------------
     allposts = Post.objects.filter(author=user.profile, group=None)
 
@@ -42,6 +44,7 @@ def Home(request):
         'postform': mypostform,
         'groups': groups,
         'newgroupform': newgroupform,
+        'matches': matches,
     }
     return render(request, 'Homepage/home.html', context)
 
