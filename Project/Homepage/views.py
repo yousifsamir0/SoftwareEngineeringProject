@@ -79,6 +79,7 @@ def savedposts(request):
         'groups': groups,
         'newgroupform': newgroupform,
         'savedposts': savedposts,
+        'user': user,
 
     }
     return render(request, 'Homepage/savedposts.html', context)

@@ -38,26 +38,16 @@
                     </li>
                     <li class="nav-item">
                         <!-- PROFILE BUTTON -->
-                        <a class="nav-link text-white mx-2" href="{%url 'Profile:myprofile'%}"><i
-                                class="fa fa-user mr-2" aria-hidden="true"></i>Profile</a>
+                        <a class="nav-link text-white mx-2" href="{%url 'Profile:myprofile'%}">
+                            <img class="mr-2 rounded-circle" src="{{user.profile.avatar.url}}" height="30px"
+                                alt="">{{user.profile.fName}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white mx-2" href="{%url 'Accounts:logout'%}"><i
                                 class="fa fa-sign-out mr-1" aria-hidden="true"></i>Logout</a>
                     </li>
                     <!-- DROP DOWN MENU -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Drop
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
+
                 </ul>
 
                 <div class="form-inline my-2 my-lg-0">

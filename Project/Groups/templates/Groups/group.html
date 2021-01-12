@@ -30,7 +30,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Group Members</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Join Requests</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -94,11 +94,14 @@
                                 <div class="d-flex justify-content-sm-between border my-3 p-2">
                                     <div class="d-flex justify-content-sm-around">
                                         <!--  IMAGE PLACE -->
+
                                         <a href="{%url 'Profile:profile' member.slug %}"><img
-                                                src="{{member.avatar.url}}" class="rounded-circle mr-1" height="38"></a>
+                                                src="{{member.avatar.url}}" class="rounded-circle mr-2" height="38"></a>
                                         <!--      USER   NAME -->
-                                        <a
-                                            href="{%url 'Profile:profile' member.slug %}"><span><strong>{{member.get_name}}</strong></span></a>
+                                        <div class="d-flex flex-row justify-content-sm-center"><a
+                                                href="{%url 'Profile:profile' member.slug %}"><span
+                                                    class=""><strong>{{member.get_name}}</strong></span></a></div>
+
                                     </div>
                                     {%if user == group.owner.user %}
 
