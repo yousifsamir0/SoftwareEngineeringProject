@@ -3,8 +3,10 @@ from Posts.models import Post, Comment
 from Groups.models import Group
 from Posts.forms import postform
 from Groups.forms import GroupForm
-from .models import Match
 from django.contrib.auth.decorators import login_required
+from requests import get
+import json
+import datetime
 
 
 # Create your views here.
@@ -26,7 +28,6 @@ def Home(request):
     user = request.user
     friends = user.profile.get_friends()
     groups = user.profile.get_groups()
-    matches = Match.objects.all()
     # --------------------get all related posts------------------------
     allposts = Post.objects.filter(author=user.profile, group=None)
 
@@ -36,6 +37,23 @@ def Home(request):
     for group in groups:
         groupposts = Post.objects.filter(group=group)
         allposts = allposts | groupposts
+
+    # ------------------------------------------------------------------
+    # ------------------------ Football-api -----------------------------
+
+    today = datetime.datetime.now().strftime("%Y-%m-%d")
+    tomorrow = (datetime.datetime.now() +
+                datetime.timedelta(days=1)).strftime("%Y-%m-%d")
+
+    headers = {"apikey": "44cbf3a0-5475-11eb-8878-c57f02f827e2"}
+    params = (
+        ("season_id", "1675"),
+        ("date_from", today),
+        ("date_to", tomorrow),
+    )
+    EGYmatches = json.loads(get('https://app.sportdataapi.com/api/v1/soccer/matches',
+                                headers=headers, params=params).text)["data"]
+
     # ------------------------------------------------------------------
     context = {
         'user': user,
@@ -44,7 +62,10 @@ def Home(request):
         'postform': mypostform,
         'groups': groups,
         'newgroupform': newgroupform,
-        'matches': matches,
+        'EGYmatches': EGYmatches,
+
+
+
     }
     return render(request, 'Homepage/home.html', context)
 
@@ -58,5 +79,6 @@ def savedposts(request):
         'groups': groups,
         'newgroupform': newgroupform,
         'savedposts': savedposts,
+
     }
     return render(request, 'Homepage/savedposts.html', context)

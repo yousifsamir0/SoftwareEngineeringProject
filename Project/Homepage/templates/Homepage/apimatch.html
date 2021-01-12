@@ -1,0 +1,44 @@
+<div class="card match-container my-1 col-12" style="background-color: #a1cbff;">
+    <div class=" d-flex flex-row justify-content-between">
+        <div class="left-club-container d-flex flex-column">
+            <div class="club-img d-flex justify-content-start" style="height:50px">
+                <img src="{{match.home_team.logo}}" style="height:50px;">
+            </div>
+            <div class="club-name justify-content-start">
+                <div class=""><span>{{match.home_team.name}}</span></div>
+            </div>
+        </div>
+        <div class="score-container flex-column d-flex justify-content-center ">
+            <div class="status d-flex justify-content-center">
+                {{match.status}}
+            </div>
+            {%if match.status_code == 0 %}
+            <div class="score rounded">
+                <div class=" d-flex flex-row justify-content-center">
+                    <div class="h4 ">{{ match.match_start|slice:"12:16:1" }} PM</div>
+
+                </div>
+            </div>
+            {%else%}
+            <div class="score rounded">
+                <div class=" d-flex flex-row">
+                    <div class="h4 ">{{match.stats.home_score}}</div>
+                    <div class="mx-4 h4 ">:</div>
+                    <div class="h4 ">{{match.stats.away_score}}</div>
+                </div>
+            </div>
+
+            {%endif%}
+
+        </div>
+
+        <div class="right-club-container d-flex flex-column">
+            <div class="club-img d-flex justify-content-end" style="height:50px">
+                <img src="{{match.away_team.logo}}" style="height:50px">
+            </div>
+            <div class="club-name d-flex justify-content-end">
+                <div class=""><span>{{match.away_team.name}}</span></div>
+            </div>
+        </div>
+    </div>
+</div>

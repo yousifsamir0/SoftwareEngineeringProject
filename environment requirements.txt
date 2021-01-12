@@ -1,4 +1,5 @@
 -python version 3.x
--django module 
+-django framework 
 -pillow module
--django-widget-tweaks
+-django-widget-tweaks module
+-requests module

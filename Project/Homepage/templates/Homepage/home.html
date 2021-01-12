@@ -120,9 +120,11 @@
 
             </div>
             <hr class="w-100 m-0 mb-2 p-0">
-            {%for match in matches%}
-            {%include 'Homepage/match.html' with match=match %}
+
+            {%for match in EGYmatches%}
+            {%include 'Homepage/apimatch.html' with match=match %}
             {%endfor%}
+
 
 
 
