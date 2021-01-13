@@ -1,5 +1,7 @@
 -python version 3.x
--django framework 
--pillow module
--django-widget-tweaks module
--requests module
+framework and modules install commands :
+
+1- "pip install django"  
+2- "pip install pillow" 
+3- "pip install django-widget-tweaks"
+4- "pip insatall requests"
