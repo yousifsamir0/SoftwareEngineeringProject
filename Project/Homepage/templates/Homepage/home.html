@@ -120,10 +120,36 @@
 
             </div>
             <hr class="w-100 m-0 mb-2 p-0">
-
+            {%if EGY_data %}
             {%for match in EGYmatches%}
             {%include 'Homepage/apimatch.html' with match=match %}
             {%endfor%}
+            {%else%}
+            <div class=" ml-2 my-1 title ">
+
+                <h4>There is no matches Today :( </h4>
+
+            </div>
+            <hr class="w-100 m-0 mb-2 p-0">
+            <div class=" ml-2 my-1 title ">
+
+                <h3>English Premier League - Today: </h3>
+
+            </div>
+            <hr class="w-100 m-0 mb-2 p-0">
+            {%if ENG_data %}
+            {%for match in ENGmatches%}
+            {%include 'Homepage/apimatch.html' with match=match %}
+            {%endfor%}
+            {%else%}
+            <div class=" ml-2 my-1 title ">
+
+                <h4>There is no matches Today :( </h4>
+
+            </div>
+
+            {%endif%}
+            {%endif%}
 
 
 

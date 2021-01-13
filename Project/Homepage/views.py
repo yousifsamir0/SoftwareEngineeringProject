@@ -52,7 +52,29 @@ def Home(request):
         ("date_to", tomorrow),
     )
     EGYmatches = json.loads(get('https://app.sportdataapi.com/api/v1/soccer/matches',
-                                headers=headers, params=params).text)["data"]
+                                headers=headers, params=params).text)
+    EGY_data = False
+    if ("data" in EGYmatches):
+        EGY_data = True
+        EGYmatches = EGYmatches["data"]
+
+    else:
+        EGY_data = False
+
+    params = (
+        ("season_id", "352"),
+        ("date_from", today),
+        ("date_to", tomorrow),
+    )
+    ENGmatches = json.loads(get('https://app.sportdataapi.com/api/v1/soccer/matches',
+                                headers=headers, params=params).text)
+    ENG_data = False
+    if ("data" in ENGmatches):
+        ENG_data = True
+        ENGmatches = ENGmatches["data"]
+
+    else:
+        ENG_data = False
 
     # ------------------------------------------------------------------
     context = {
@@ -63,6 +85,10 @@ def Home(request):
         'groups': groups,
         'newgroupform': newgroupform,
         'EGYmatches': EGYmatches,
+        'ENG_data': ENG_data,
+        'EGY_data': EGY_data,
+        'ENGmatches': ENGmatches,
+
 
 
 
